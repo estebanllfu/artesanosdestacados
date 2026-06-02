@@ -69,3 +69,7 @@ sideNav.addEventListener("mouseleave", () => {
         sideNav.classList.remove("visible");
     }, 300);
 });
+
+window.onload = () => {
+    window.scrollTo(0, 0);
+};
