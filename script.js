@@ -8,24 +8,18 @@ const navLinks = document.querySelectorAll(".bottom-nav a");
 
 let isInHero = true;
 
-/* ========================= */
-/* DETECTAR SECCIÓN ACTIVA */
-/* ========================= */
-
 window.addEventListener("scroll", () => {
     let current = "";
 
     const heroHeight = hero.offsetHeight;
 
-    // 👇 detectar si estamos en el hero
     if (window.scrollY < heroHeight - 100) {
         isInHero = true;
-        sideNav.classList.remove("visible"); // ocultar siempre
+        sideNav.classList.remove("visible");
     } else {
         isInHero = false;
     }
 
-    // detectar sección activa
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
 
@@ -34,16 +28,14 @@ window.addEventListener("scroll", () => {
         }
     });
 
-    // NAV INFERIOR
-    navLinks.forEach(link => {
+    sideLinks.forEach(link => {
         link.classList.remove("active");
         if (link.getAttribute("href") === "#" + current) {
             link.classList.add("active");
         }
     });
 
-    // NAV LATERAL
-    sideLinks.forEach(link => {
+    navLinks.forEach(link => {
         link.classList.remove("active");
         if (link.getAttribute("href") === "#" + current) {
             link.classList.add("active");
@@ -51,14 +43,11 @@ window.addEventListener("scroll", () => {
     });
 });
 
-/* ========================= */
 /* HOVER SOLO FUERA DEL HERO */
-/* ========================= */
-
 let timeout;
 
 hoverZone.addEventListener("mouseenter", () => {
-    if (!isInHero) { // 👈 CLAVE
+    if (!isInHero) {
         clearTimeout(timeout);
         sideNav.classList.add("visible");
     }
@@ -70,6 +59,7 @@ sideNav.addEventListener("mouseleave", () => {
     }, 300);
 });
 
+/* FORZAR INICIO ARRIBA */
 window.onload = () => {
     window.scrollTo(0, 0);
 };
