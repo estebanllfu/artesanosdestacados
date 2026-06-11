@@ -217,12 +217,10 @@ cards.forEach(card => {
 });
 
 /* ========================= */
-/* GENERAR CARDS (CORRECTO) */
+/* GENERAR CARDS */
 /* ========================= */
 
 window.addEventListener("DOMContentLoaded", () => {
-
-    const grid = document.getElementById("gridGanadores");
 
     Object.keys(dataGanadores).forEach(id => {
         const data = dataGanadores[id];
@@ -232,7 +230,7 @@ window.addEventListener("DOMContentLoaded", () => {
         card.dataset.id = id;
 
         card.innerHTML = `
-            <img src="img/ganadores/${id}.jpg">
+            <img src="${data.imagen}">
             <div class="ganador-overlay">
                 <strong>${data.nombre}</strong>
                 <span>${data.categoria}</span>
@@ -241,7 +239,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         grid.appendChild(card);
 
-        /* 👇 EVENTO CLICK AQUÍ MISMO (IMPORTANTE) */
+        /* CLICK */
         card.addEventListener("click", () => abrirGanador(id));
     });
 
